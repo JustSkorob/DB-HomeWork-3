@@ -17,11 +17,16 @@ JOIN tracks t ON a.album_id = t.album_id
 GROUP BY a.album_title;
 
 --Все исполнители, которые не выпустили альбомы в 2020 году:
-SELECT DISTINCT ar.artist_name 
+SELECT DISTINCT ar.artist_name
 FROM artists ar
-LEFT JOIN artist_album aa ON ar.artist_id = aa.artist_id
-LEFT JOIN albums al ON aa.album_id = al.album_id
-WHERE al.release_year != 2020 OR al.release_year IS NULL;
+WHERE ar.artist_id NOT IN (
+    SELECT ar_inner.artist_id
+    FROM artists ar_inner
+    JOIN artist_album aa ON ar_inner.artist_id = aa.artist_id
+    JOIN albums al ON aa.album_id = al.album_id
+    WHERE al.release_year = 2020
+);
+
 
 --Названия сборников, в которых присутствует конкретный исполнитель (Kanye West):
 SELECT DISTINCT c.collection_title 
