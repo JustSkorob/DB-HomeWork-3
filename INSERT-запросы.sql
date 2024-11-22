@@ -106,3 +106,16 @@ INSERT INTO tracks (track_title, duration, album_id)
 VALUES
     ('My Heart Will Go On', '00:04:20', (SELECT album_id FROM albums WHERE album_title = '30')),
     ('Rolling in the Deep', '00:03:50', (SELECT album_id FROM albums WHERE album_title = '30'));
+
+INSERT INTO tracks (track_title, duration, album_id) VALUES
+('my own', '00:03:20', 1),
+('own my', '00:03:30', 1),
+('my', '00:03:10', 2),
+('oh my god', '00:04:00', 2),
+('myself', '00:03:50', 3),
+('by myself', '00:03:40', 3),
+('bemy self', '00:04:10', 3),
+('myself by', '00:03:15', 3),
+('by myself by', '00:03:25', 3),
+('beemy', '00:04:30', 3),
+('premyne', '00:03:45', 3);

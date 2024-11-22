@@ -20,9 +20,9 @@ FROM artists
 WHERE artist_name NOT LIKE '% %';
 
 -- Получить названия треков, содержащих слово "мой" или "my" (регистр не учитывается)
-SELECT track_title 
-FROM tracks 
-WHERE track_title ILIKE '%мой%' OR track_title ILIKE '%my%';
+SELECT track_title
+FROM tracks
+WHERE track_title ~* '\y(my|мой)\y';
 
 -- Подсчитать количество исполнителей в каждом жанре
 SELECT g.genre_name, COUNT(ag.artist_id) AS artist_count 
